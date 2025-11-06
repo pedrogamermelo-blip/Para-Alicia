@@ -1,0 +1,247 @@
+:root {
+  --accent: #ff0000;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
+  background-color:  #000000;
+  color: #e6eef8;
+  overflow-x: hidden;
+}
+
+/* Banner */
+.hero {
+  position: relative;
+  height: 15vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #160345;
+  border-radius: 0 0 20px 20px;
+  flex-direction: column;
+}
+
+.hero-overlay {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at 20% 30%, rgba(255, 255, 255, 0.05), transparent 20%);
+}
+
+.hero-content {
+  text-align: center;
+  z-index: 2;
+}
+
+.hero h1 {
+  font-size: 2rem;
+  color: #ffffff;
+}
+
+.hero .subtitle {
+  opacity: 0.9;
+  color: #fff;
+}
+
+/* Botão de música */
+.music-btn {
+  margin-top: 10px;
+  background: rgba(255, 255, 255, 0.2);
+  border: 2px solid #fff;
+  color: white;
+  padding: 8px 16px;
+  border-radius: 20px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  backdrop-filter: blur(5px);
+}
+
+.music-btn:hover {
+  background: #fff;
+  color: #ff69b4;
+  transform: scale(1.05);
+}
+
+/* Container */
+.container {
+  max-width: 980px;
+  margin: -2rem auto 3rem;
+  padding: 1.5rem;
+}
+
+/* Foto e card */
+.special-photo {
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+  margin: 1.5rem 0;
+  justify-content: flex-start;
+}
+
+#photoPlaceholder {
+  width: 250px;
+  height: 150px;
+  background: rgba(200, 200, 200, 0.5);
+  color: #000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 12px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: background 0.3s;
+}
+
+#photoPlaceholder:hover {
+  background: rgba(200, 200, 200, 0.8);
+}
+
+#photoClick,
+#photoText {
+  display: none;
+  max-width: 250px;
+  border-radius: 12px;
+}
+
+/* Card do texto */
+.text-card {
+  background-color: #FFFFFF;
+  border-radius: 12px;
+  padding: 1rem;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+  color: #000000;
+  max-width: 600px;
+  margin-top: 0rem;
+}
+
+/* Fade-in suave */
+.fade-in {
+  animation: fadeIn 1s ease forwards;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* Footer */
+footer {
+  text-align: center;
+  padding: 1rem 0;
+  color: rgba(230, 238, 248, 0.7);
+}
+
+/* Responsivo */
+@media (max-width: 700px) {
+  .special-photo {
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: flex-start;
+    gap: 0.5rem;
+  }
+
+  #photoPlaceholder,
+  #photoClick {
+    max-width: 120px;
+    margin-left: 0;
+  }
+
+  #photoText {
+    max-width: calc(100% - 130px);
+    margin-top: 0;
+  }
+}
+
+/* Card principal com bolinhas roxas subindo */
+.message-card {
+  position: relative;
+  background-color: #1a0033;
+  border-radius: 16px;
+  padding: 2rem;
+  color: #fff;
+  font-size: 1.1rem;
+  box-shadow: 0 0 20px rgba(162, 84, 247, 0.3);
+  overflow: hidden;
+  max-width: 700px;
+  margin: 2rem auto;
+  text-align: center;
+}
+
+/* Bolinhas roxas animadas dentro do card */
+.message-card::before,
+.message-card::after {
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  pointer-events: none;
+  background-image: radial-gradient(circle, #a855f7 2px, transparent 2px);
+  background-size: 20px 20px;
+  animation: floatingDots 10s linear infinite;
+  opacity: 0.15;
+}
+
+.message-card::after {
+  animation-delay: 5s;
+  opacity: 0.25;
+}
+
+@keyframes floatingDots {
+  from {
+    background-position: 0 0;
+  }
+  to {
+    background-position: 0 -200px;
+  }
+}
+/* --- Bolinhas roxas subindo em todo o fundo --- */
+body::before,
+body::after {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: radial-gradient(circle, #a855f7 2px, transparent 2px);
+  background-size: 25px 25px;
+  animation: floatDots 15s linear infinite;
+  opacity: 0.08;
+  pointer-events: none;
+  z-index: 0;
+}
+
+body::after {
+  animation-delay: 7s;
+  opacity: 0.12;
+}
+
+@keyframes floatDots {
+  from {
+    background-position: 0 0;
+  }
+  to {
+    background-position: 0 -300px;
+  }
+}
+
+/* garantir que o conteúdo fique acima do fundo */
+body * {
+  position: relative;
+  z-index: 1;
+}
