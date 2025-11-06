@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Eu te amo.</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="hero">
+    <div class="hero-overlay"></div>
+    <div class="hero-content">
+      <h1>Para Alicia</h1>
+      <p class="subtitle">Feliz aniversário — com todo o meu amor por ti.</p>
+    </div>
+  </header>
+
+  <main class="container">
+    <section class="special-photo">
+      <div id="photoPlaceholder">Clique aqui</div>
+      <img id="photoClick" src="ft.jpg" alt="Foto nossa" />
+      <div id="photoText" class="hidden">
+        <div class="text-card">
+          <p>
+            Alicia, lembra desse dia? Foi a primeira vez em que você me viu chorando.
+            Mesmo que eu estivesse chorando por algo besta, você ficou comigo mesmo assim,
+            cuidou de mim, se preocupou. Eu fiquei tão feliz, cara, e eu sou muito grato por isso,
+            muito mesmo. obrigado, tá?
+          </p>
+        </div>
+      </div>
+    </section>
+    <section class="main-message">
+  <div class="message-card">
+    <p>
+      Bom, agora é o oque eu realmente queria falar, feliz aniversário Alicia, quero que você saiba que é a garota mais gentil desse mundo, você merece tudo oque este mundo tem a oferecer, você me salvou de incontaveis maneiras, você me mostrou oque esse mundo tem a me oferecer tambem, e resta a mim a conquistar ele agora, mas, eu ainda quero que eu faça essa caminhada junto ao seu lado, viver os momentos juntos, compartilhar minha felicidade com você, mostrar que eu posso te fazer feliz, mostrar que eu melhorei. Eu te amo Alicia, e eu não vou deixar de te amar. Eu sempre lembro do seus olhinhos brilhando olhando pra mim antes de eu conseguir dormir, e eu quero ver eles de novo, quero poder ser um dos motivos do seu sorriso, da sua felicidade, eu quero te abraçar de novo, quero poder te fazer sentir segura em meus braços, quero ser aquele que você ama Alicia, quero estar com você em todos os momentos, de tristeza, angustia, feliciade, todos. E eu sempre vou estar aqui te esperando, eu te prometo. Aproveita seu dia ta princesa? você merece. Eu te amo com toda minha alma, e sempre vou estar aqui por ti.
+    </p>
+  </div>
+</section>
+
+  </main>
+
+  <footer>
+    <p>Feito com carinho — <span id="fromName">Seu nome</span></p>
+  </footer>
+
+  <audio id="bgMusic" loop>
+    <source src="mp.mp3" type="audio/mpeg">
+  </audio>
+
+  <script>
+    // Clique na imagem -> fade-in suave + tocar música
+    const placeholder = document.getElementById('photoPlaceholder');
+    const photo = document.getElementById('photoClick');
+    const photoText = document.getElementById('photoText');
+    const music = document.getElementById('bgMusic');
+
+    music.volume = 0.3;
+
+    placeholder.addEventListener('click', () => {
+      placeholder.style.display = 'none';
+      photo.classList.add('fade-in');
+      photoText.classList.add('fade-in');
+      photo.style.display = 'block';
+      photoText.style.display = 'block';
+
+      // Tocar música junto com o clique
+      music.play().catch(err => console.log("Reprodução automática bloqueada:", err));
+    });
+
+    document.getElementById('fromName').textContent = 'Pedro';
+  </script>
+
+</body>
+</html>
